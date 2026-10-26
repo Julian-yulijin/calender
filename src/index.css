@@ -1,0 +1,338 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-slate-100 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  @apply bg-brand-200 text-brand-900;
+}
+
+/* 细滚动条 */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.5) transparent;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.5);
+  border-radius: 9999px;
+}
+
+/* FullCalendar 主题适配 */
+.fc {
+  --fc-border-color: rgb(226 232 240);
+  --fc-today-bg-color: rgba(99, 102, 241, 0.07);
+  --fc-page-bg-color: transparent;
+  --fc-neutral-bg-color: transparent;
+  --fc-list-event-hover-bg-color: rgba(148, 163, 184, 0.12);
+  --fc-now-indicator-color: #ef4444;
+  font-family: inherit;
+  height: 100%;
+}
+
+html.dark .fc {
+  --fc-border-color: rgb(30 41 59);
+  --fc-today-bg-color: rgba(99, 102, 241, 0.13);
+  --fc-page-bg-color: transparent;
+  --fc-neutral-bg-color: transparent;
+  --fc-list-event-hover-bg-color: rgba(148, 163, 184, 0.12);
+}
+
+.fc .fc-scrollgrid {
+  border: none;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.fc-theme-standard td,
+.fc-theme-standard th {
+  border-color: var(--fc-border-color);
+}
+
+.fc-theme-standard .fc-scrollgrid-section-header > td {
+  border: none;
+}
+
+.fc .fc-col-header-cell {
+  background: rgba(248, 250, 252, 0.7);
+}
+
+html.dark .fc .fc-col-header-cell {
+  background: rgba(15, 23, 42, 0.55);
+}
+
+.fc .fc-col-header-cell-cushion {
+  padding: 10px 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgb(100 116 139);
+  text-decoration: none;
+}
+
+html.dark .fc .fc-col-header-cell-cushion {
+  color: rgb(148 163 184);
+}
+
+.fc .fc-daygrid-day-number {
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 6px 9px;
+  color: rgb(71 85 105);
+  text-decoration: none;
+}
+
+html.dark .fc .fc-daygrid-day-number {
+  color: rgb(203 213 225);
+}
+
+.fc .fc-day-today .fc-daygrid-day-number {
+  @apply bg-brand-600 text-white;
+  border-radius: 9999px;
+  margin: 4px;
+  padding: 2px 7px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+  background: var(--fc-today-bg-color);
+}
+
+.fc .fc-daygrid-day-frame {
+  min-height: 92px;
+}
+
+.fc .fc-daygrid-more-link {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgb(79 70 229);
+  padding-left: 6px;
+}
+
+.fc .fc-timegrid-axis-cushion,
+.fc .fc-timegrid-slot-label-cushion {
+  font-size: 0.68rem;
+  color: rgb(100 116 139);
+}
+
+.fc .fc-timegrid-slot {
+  height: 2.6rem;
+}
+
+.fc .fc-timegrid-now-indicator-line {
+  border-color: #ef4444;
+  border-width: 2px 0 0;
+}
+
+.fc .fc-timegrid-now-indicator-arrow {
+  border-color: #ef4444;
+  background: #ef4444;
+}
+
+.fc .fc-list-day-cushion {
+  @apply bg-slate-50 dark:bg-slate-900;
+  padding: 8px 12px;
+}
+
+.fc .fc-list-event td {
+  padding: 8px 10px;
+  vertical-align: middle;
+}
+
+.fc .fc-list-event-title a {
+  font-weight: 500;
+  color: inherit;
+  text-decoration: none;
+}
+
+.fc .fc-list-empty {
+  background: transparent;
+  color: rgb(148 163 184);
+}
+
+/* 事件块 */
+.fc .fc-event {
+  border: none !important;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.fc .fc-event:focus-visible {
+  outline: 2px solid rgb(79 70 229);
+  outline-offset: 1px;
+}
+
+.fc .fc-event-main {
+  color: inherit;
+  padding: 0;
+}
+
+.fc-event-custom {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 1px 4px;
+  overflow: hidden;
+  line-height: 1.25;
+}
+
+.fc-event-custom .fc-event-time {
+  font-size: 0.62rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.fc-event-custom .fc-event-title {
+  font-size: 0.76rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fc-event-custom.is-completed .fc-event-title {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.fc-event-custom .fc-event-badges {
+  display: none;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+}
+
+.fc-daygrid-event .fc-event-custom {
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 5px;
+}
+
+.fc-daygrid-event .fc-event-custom .fc-event-time {
+  font-size: 0.62rem;
+  opacity: 0.85;
+}
+
+.fc-daygrid-event .fc-event-custom .fc-event-badges,
+.fc-timegrid-event .fc-event-custom .fc-event-badges {
+  display: inline-flex;
+}
+
+.fc-timegrid-event .fc-event-custom {
+  padding: 3px 5px;
+  height: 100%;
+}
+
+.fc-timegrid-event .fc-event-title {
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* 拖拽高亮 */
+.fc .fc-event.fc-event-dragging {
+  opacity: 0.7;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.25);
+}
+
+/* Markdown 内容 */
+.markdown-body {
+  @apply text-sm leading-6 text-slate-700 dark:text-slate-300;
+}
+.markdown-body > * + * {
+  margin-top: 0.6em;
+}
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3 {
+  @apply font-semibold text-slate-900 dark:text-slate-100;
+}
+.markdown-body h1 {
+  font-size: 1.15rem;
+}
+.markdown-body h2 {
+  font-size: 1.05rem;
+}
+.markdown-body h3 {
+  font-size: 0.98rem;
+}
+.markdown-body ul {
+  @apply list-disc pl-5;
+}
+.markdown-body ol {
+  @apply list-decimal pl-5;
+}
+.markdown-body code {
+  @apply rounded bg-slate-100 px-1 py-0.5 text-[0.8em] dark:bg-slate-800;
+}
+.markdown-body pre {
+  @apply overflow-x-auto rounded-lg bg-slate-100 p-3 text-xs dark:bg-slate-800;
+}
+.markdown-body pre code {
+  @apply bg-transparent p-0;
+}
+.markdown-body blockquote {
+  @apply border-l-2 border-brand-300 pl-3 text-slate-500 dark:border-brand-700 dark:text-slate-400;
+}
+.markdown-body a {
+  @apply text-brand-600 underline dark:text-brand-300;
+}
+.markdown-body table {
+  @apply w-full border-collapse text-xs;
+}
+.markdown-body th,
+.markdown-body td {
+  @apply border border-slate-200 px-2 py-1 dark:border-slate-700;
+}
+.markdown-body img {
+  @apply max-w-full rounded-lg;
+}
+
+/* 输入框隐藏 date picker 图标颜色问题 */
+input[type='date'],
+input[type='datetime-local'] {
+  @apply text-slate-700 dark:text-slate-200;
+}
+
+/* 移动端全屏高度适配 */
+.h-app {
+  height: 100vh;
+}
+
+@supports (height: 100dvh) {
+  .h-app {
+    height: 100dvh;
+  }
+}
